@@ -49,6 +49,13 @@ _io = [
         IOStandard("LVCMOS33"),
     ),
 
+    ("spiflash4x", 0,
+        Subsignal("cs_n", Pins("N8")),
+        Subsignal("dq", Pins("T8", "T7", "M7", "N7")),
+        IOStandard("LVCMOS33")
+    ),
+
+
     # SDRAM (IS42S16160B (32MB))
     ("sdram_clock", 0, Pins("R15"), IOStandard("LVCMOS33")),
     ("sdram", 0,

@@ -103,14 +103,17 @@ class BaseSoC(SoCCore):
         self.submodules.crg = _CRG(platform, sys_clk_freq, use_internal_osc=use_internal_osc, with_video_pll=with_video_pll, sdram_rate=sdram_rate)
 
         # Leds -------------------------------------------------------------------------------------
-        if with_led_chaser:
-            ledn = platform.request_all("user_led_n")
-            self.submodules.leds = LedChaser(pads=ledn, sys_clk_freq=sys_clk_freq)
+##        if with_led_chaser:
+ ##           ledn = platform.request_all("user_led_n")
+  ##          self.submodules.leds = LedChaser(pads=ledn, sys_clk_freq=sys_clk_freq)
 
         # SPI Flash --------------------------------------------------------------------------------
         from litespi.modules import W25Q256
         from litespi.opcodes import SpiNorFlashOpCodes as Codes
-        self.add_spi_flash(mode="1x", module=W25Q256(Codes.READ_1_1_1))
+#
+# LEE: Comment out adding spi flash to not conflict with linux-on-litex code...
+#
+#        self.add_spi_flash(mode="1x", module=W25Q256(Codes.READ_1_1_1))
 
         # SDR SDRAM --------------------------------------------------------------------------------
         if not self.integrated_main_ram_size:
